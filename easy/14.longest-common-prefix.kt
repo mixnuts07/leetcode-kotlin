@@ -20,10 +20,22 @@ class Solution {
         }
         return output
     }
-    fun longestCommonPrefix(strs: Array<String>) {
-        for(i in 0 until strs.size) {
-            // strs[0].commonPrefixWith(strs[])
-                println(i)
+    fun longestCommonPrefix(strs: Array<String>): String {
+        var tmp = ""
+        var output = ""
+        if(strs.size == 1) {
+            return strs[0]
         }
+        for(i in 1 until strs.size) {
+            tmp = strs[0].commonPrefixWith(strs[i])
+            if(tmp == ""){
+                output = ""
+                break
+            }
+			if (output.length == 0 || output.length > tmp.length) {
+                output = tmp
+            }
+        }
+        return output
     }
 }
